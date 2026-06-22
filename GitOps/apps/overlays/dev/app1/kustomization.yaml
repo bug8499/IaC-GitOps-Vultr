@@ -4,18 +4,21 @@ kind: Kustomization
 namespace: dev
 
 resources:
-  - ../../../base/app1
+- ../../../base/app1
 
 images:
-  - name: sample-app
-    newName: 123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/sample-app
-    newTag: latest
+- name: app1
+  newName: ghcr.io/bug8499/app1
+  newTag: 1495ecf0a0181aa10240fde7fe745480d9fded02
+- name: sample-app
+  newName: 123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/sample-app
+  newTag: latest
 
 patches:
-  - patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 1
-    target:
-      kind: Deployment
-      name: sample-app
+- patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 1
+  target:
+    kind: Deployment
+    name: sample-app
