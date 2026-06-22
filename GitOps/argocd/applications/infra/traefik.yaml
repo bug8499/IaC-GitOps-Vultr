@@ -4,7 +4,7 @@ metadata:
   name: traefik
   namespace: argocd
 spec:
-  project: sample-project
+  project: default
   source:
     repoURL: https://helm.traefik.io/traefik
     chart: traefik
