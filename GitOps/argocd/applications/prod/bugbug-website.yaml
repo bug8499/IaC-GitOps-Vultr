@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-website-dev
+  name: meme-website-prod
   namespace: argocd
 spec:
   ignoreDifferences:
@@ -11,12 +11,12 @@ spec:
     - /spec/replicas
   project: sample-project
   source:
-    repoURL: https://github.com/bug8499/IaC-GitOps
+    repoURL: https://github.com/bug8499/IaC-GitOps-Vultr
     targetRevision: main
-    path: GitOps/apps/overlays/dev/my-website   # ← ชี้ที่ overlay ของ website
+    path: GitOps/apps/overlays/prod/bugbug-website
   destination:
     server: https://kubernetes.default.svc
-    namespace: dev
+    namespace: prod
   syncPolicy:
     automated:
       prune: true

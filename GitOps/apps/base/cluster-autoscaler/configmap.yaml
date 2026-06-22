@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: cluster-autoscaler-config
-  namespace: kube-system
-data:
-  aws-region: "ap-southeast-1"
-  cluster-name: "my-k3s-cluster"

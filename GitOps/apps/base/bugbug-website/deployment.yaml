@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: meme-website
+  name: bugbug-website
 spec:
   selector:
     matchLabels:
-      app: meme-website
+      app: bugbug-website
   template:
     metadata:
       labels:
-        app: meme-website
+        app: bugbug-website
     spec:
       containers:
-        - name: meme-website
-          image: meme-website:latest
+        - name: bugbug-website
+          image: bugbug-website:latest
           ports:
             - containerPort: 80
           resources:

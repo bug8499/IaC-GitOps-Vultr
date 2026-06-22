@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: meme-website
+  name: bugbug-website
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: meme-website
+    name: bugbug-website
   minReplicas: 2        # เพิ่มจาก 1 → ไม่มี single point of failure
   maxReplicas: 20       # เพิ่มจาก 5 → รองรับ spike ได้
   metrics:

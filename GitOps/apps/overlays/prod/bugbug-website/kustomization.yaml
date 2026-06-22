@@ -4,18 +4,18 @@ kind: Kustomization
 namespace: prod
 
 resources:
-- ../../../base/meme-website
+- ../../../base/bugbug-website
 
 images:
-- name: meme-website
-  newName: public.ecr.aws/r8m4q7l9/meme-website
+- name: bugbug-website
+  newName: ghcr.io/bug8499/bugbug-website
   newTag: 37d4a6c0543fe162b87588d94dd6cbbd9316168a
 
 patches:
 - patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: main-meme.bug-website.com
+      value: main-bugbug.bug-website.com
   target:
     kind: Ingress
-    name: meme-website
+    name: bugbug-website
