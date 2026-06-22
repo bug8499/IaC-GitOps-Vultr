@@ -4,7 +4,7 @@ metadata:
   name: cloudflared
   namespace: argocd
 spec:
-  project: sample-project
+  project: default
   source:
     repoURL: https://github.com/bug8499/IaC-GitOps-Vultr
     targetRevision: HEAD
