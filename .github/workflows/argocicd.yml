@@ -41,7 +41,8 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}  # มีอยู่แล้ว ไม่ต้องสร้างเพิ่ม
+          password: ${{ secrets.GH_PAT }}
+          # password: ${{ secrets.GITHUB_TOKEN }}  # มีอยู่แล้ว ไม่ต้องสร้างเพิ่ม
 
       # แก้ใหม่: Build และ Push ไป GHCR แทน ECR
       - name: Build and push Docker image
