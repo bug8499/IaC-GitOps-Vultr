@@ -7,7 +7,7 @@ spec:
   project: sample
   source:
     repoURL: https://github.com/bug8499/IaC-GitOps-Vultr
-    targetRevision: main
+    targetRevision: HEAD
     path: GitOps/apps/base/cloudflared
   destination:
     server: https://kubernetes.default.svc
