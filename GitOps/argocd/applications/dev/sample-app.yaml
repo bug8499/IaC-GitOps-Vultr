@@ -9,7 +9,7 @@ spec:
   project: sample-project
 
   source:
-    repoURL: https://github.com/bug8499/IaC-GitOpst   # เปลี่ยน
+    repoURL: https://github.com/bug8499/IaC-GitOpst-Vultr   # เปลี่ยน
     targetRevision: main
     path: GitOps/apps/overlays/dev   # ← ชี้ไปที่ overlay dev
 

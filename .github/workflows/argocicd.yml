@@ -55,7 +55,7 @@ jobs:
       - name: Checkout iac-ops repo
         uses: actions/checkout@v4
         with:
-          repository: bug8499/IaC-GitOps
+          repository: bug8499/IaC-GitOps-Vultr
           token: ${{ secrets.GH_PAT }}
           path: iac-ops
 

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: meme-website-prod
+  name: bugbug-website-prod
   namespace: argocd
 spec:
   ignoreDifferences:

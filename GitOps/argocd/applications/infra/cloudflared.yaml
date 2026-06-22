@@ -4,10 +4,10 @@ metadata:
   name: cloudflared
   namespace: argocd
 spec:
-  project: default
+  project: sample
   source:
-    repoURL: https://github.com/bug8499/IaC-GitOps
-    targetRevision: HEAD
+    repoURL: https://github.com/bug8499/IaC-GitOps-Vultr
+    targetRevision: main
     path: GitOps/apps/base/cloudflared
   destination:
     server: https://kubernetes.default.svc

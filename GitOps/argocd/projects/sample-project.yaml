@@ -8,7 +8,7 @@ spec:
 
   # repo ที่ ArgoCD อ่านได้
   sourceRepos:
-    - https://github.com/bug8499/IaC-GitOps   # เปลี่ยนเป็น repo จริง
+    - https://github.com/bug8499/IaC-GitOps-Vultr   # เปลี่ยนเป็น repo จริง
 
   # cluster + namespace ที่ deploy ได้
   destinations:
