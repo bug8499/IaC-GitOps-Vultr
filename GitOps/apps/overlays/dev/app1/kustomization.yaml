@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: dev
+
+resources:
+  - ../../../base/app1
+
+images:
+  - name: sample-app
+    newName: 123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/sample-app
+    newTag: latest
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1
+    target:
+      kind: Deployment
+      name: sample-app

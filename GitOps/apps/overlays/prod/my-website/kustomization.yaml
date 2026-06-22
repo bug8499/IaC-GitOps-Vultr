@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: prod
+
+resources:
+- ../../../base/my-website
+
+images:
+- name: my-website
+  newName: public.ecr.aws/r8m4q7l9/my-website
+  newTag: 0f1a905a38fc0013c9f654871dee45247f9d5180
+
+patches:
+- patch: |-
+    - op: replace
+      path: /spec/rules/0/host
+      value: bug-website.com
+  target:
+    kind: Ingress
+    name: my-website

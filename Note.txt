@@ -1,0 +1,28 @@
+ลำดับการ Apply
+# 1. ติดตั้ง ArgoCD
+    kubectl apply -k GitOps/argocd/install/
+
+# 2. รอ ArgoCD พร้อม
+    kubectl wait --for=condition=available deployment/argocd-server -n argocd --timeout=120s
+
+# 3. สร้าง Project
+    kubectl apply -f GitOps/argocd/projects/sample-project.yaml
+
+# 4. Apply Applications (ทำทุกครั้งที่เพิ่ม app ใหม่)
+    kubectl apply -f GitOps/argocd/applications/dev/sample-app.yml
+    kubectl apply -f GitOps/argocd/applications/prod/sample-app.yml
+    kubectl apply -f GitOps/argocd/applications/dev/my-website.yml
+    kubectl apply -f GitOps/argocd/applications/prod/my-website.yml
+
+เพิ่ม App ใหม่
+1. สร้าง GitOps/apps/base/<app>/  พร้อม deployment + service + kustomization
+2. สร้าง GitOps/apps/overlays/dev/<app>/kustomization.yaml
+3. สร้าง GitOps/apps/overlays/prod/<app>/kustomization.yaml
+4. สร้าง GitOps/argocd/applications/dev/<app>.yml
+5. สร้าง GitOps/argocd/applications/prod/<app>.yml
+6. kubectl apply -f GitOps/argocd/applications/dev/<app>.yml
+7. kubectl apply -f GitOps/argocd/applications/prod/<app>.yml
+
+
+ติดตั้งตัว k3s ใน ec2
+curl -sfL https://get.k3s.io | sh -

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"d:\\\\TestCode\\\\Test_GitOps\\\\iac-ops\" -Recurse -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Sort-Object)",
+      "Bash(grep -E \"\\\\.\\(yaml|yml|tf|json|md|txt\\)$\")",
+      "Bash(cat)",
+      "Read(//tmp/**)",
+      "Bash(dir /s /b \"d:\\\\TestCode\\\\Test_GitOps\\\\iac-ops\")",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\TestCode\\\\Test_GitOps\\\\iac-ops\" -Recurse -Force | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"d:\\\\TestCode\\\\Test_GitOps\\\\iac-ops\", \"\"\\) } | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\TestCode\\\\Test_GitOps\\\\iac-ops\\\\IaC\" -Recurse -Force | Where-Object { -not $_.PSIsContainer } | Select-Object FullName)",
+      "PowerShell(Get-ChildItem -Path \"d:\\\\TestCode\\\\Test_GitOps\\\\iac-ops\" -Recurse -File | Where-Object { $_.FullName -notmatch '\\\\.git' } | ForEach-Object { $_.FullName } | Sort-Object)"
+    ]
+  }
+}

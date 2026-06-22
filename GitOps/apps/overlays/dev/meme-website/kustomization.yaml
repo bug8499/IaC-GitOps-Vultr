@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: dev
+
+resources:
+- ../../../base/meme-website
+
+images:
+- name: meme-website
+  newName: public.ecr.aws/r8m4q7l9/meme-website
+  newTag: 81862a9568f6728505787f99afb39d5a1a3e87da
+  
+patches:
+- patch: |-
+    - op: replace
+      path: /spec/rules/0/host
+      value: dev-meme.bug-website.com
+  target:
+    kind: Ingress
+    name: meme-website

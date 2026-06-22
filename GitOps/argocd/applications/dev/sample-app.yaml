@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sample-app-dev
+  namespace: argocd
+  labels:
+    environment: dev
+spec:
+  project: sample-project
+
+  source:
+    repoURL: https://github.com/bug8499/IaC-GitOpst   # เปลี่ยน
+    targetRevision: main
+    path: GitOps/apps/overlays/dev   # ← ชี้ไปที่ overlay dev
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+
+  syncPolicy:
+    automated:
+      prune: true       # ลบ resource ที่ไม่มีใน git แล้ว
+      selfHeal: true    # sync กลับถ้ามีใครไป edit ตรงๆ บน cluster
+    syncOptions:
+      - CreateNamespace=true

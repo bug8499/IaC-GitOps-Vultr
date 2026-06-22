@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pgadmin-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/bug8499/IaC-GitOps
+    targetRevision: main
+    path: GitOps/apps/overlays/prod/pgadmin
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

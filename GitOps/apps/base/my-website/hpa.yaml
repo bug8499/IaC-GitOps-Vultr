@@ -1,0 +1,35 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-website
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-website
+  minReplicas: 2        # เพิ่มจาก 1 → ไม่มี single point of failure
+  maxReplicas: 20       # เพิ่มจาก 5 → รองรับ spike ได้
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 20   # ลดจาก 70 → scale เร็วขึ้น ก่อน overload
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 70
+  # behavior:
+  #   scaleUp:
+  #     stabilizationWindowSeconds: 0   # scale ทันทีไม่รอ
+  #     policies:
+  #     - type: Pods
+  #       value: 4                       # เพิ่มได้ครั้งละ 4 pods
+  #       periodSeconds: 15
+  #     - type: Percent
+  #       value: 100                     # หรือ double ก็ได้
+  #       periodSeconds: 15
+  #     selectPolicy: Max                # เลือก policy ที่เพิ่มได้มากกว่า

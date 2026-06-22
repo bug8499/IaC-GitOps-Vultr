@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meme-website
+spec:
+  selector:
+    matchLabels:
+      app: meme-website
+  template:
+    metadata:
+      labels:
+        app: meme-website
+    spec:
+      containers:
+        - name: meme-website
+          image: meme-website:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          # envFrom:
+          #   - secretRef:
+          #       name: db-credentials

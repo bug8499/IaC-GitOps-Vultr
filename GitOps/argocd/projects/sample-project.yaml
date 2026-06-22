@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: sample-project
+  namespace: argocd
+spec:
+  description: Sample App Project
+
+  # repo ที่ ArgoCD อ่านได้
+  sourceRepos:
+    - https://github.com/bug8499/IaC-GitOps   # เปลี่ยนเป็น repo จริง
+
+  # cluster + namespace ที่ deploy ได้
+  destinations:
+    - namespace: dev
+      server: https://kubernetes.default.svc
+    - namespace: prod
+      server: https://kubernetes.default.svc
+    - namespace: kube-system
+      server: https://kubernetes.default.svc
+
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
