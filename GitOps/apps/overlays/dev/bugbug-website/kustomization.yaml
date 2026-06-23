@@ -9,7 +9,7 @@ resources:
 images:
 - name: bugbug-website
   newName: ghcr.io/bug8499/bugbug-website
-  newTag: 81862a9568f6728505787f99afb39d5a1a3e87da
+  newTag: c88ab76ee2806015fd4690d7d71ff6aeef108883
   
 patches:
 - patch: |-
