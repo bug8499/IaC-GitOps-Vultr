@@ -4,6 +4,7 @@ metadata:
   name: bugbug-website
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
+    argocd.argoproj.io/ignore-healthcheck: "true"
 spec:
   rules:
   - host: placeholder.com
